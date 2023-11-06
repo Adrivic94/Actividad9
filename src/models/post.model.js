@@ -4,4 +4,27 @@ const selectAllPostsWithAutores = () => {
   );
 };
 
-module.exports = { selectAllPostsWithAutores };
+const selectPostById = (postId) => {
+    return db.query('select * from posts where idposts = ?', [postId]);
+};
+
+const insertPost = ({
+    titulo,
+    descripcion,
+    fecha_creacion,
+    categoria,
+    fk_autores_id
+}) => {
+    return db.query(
+        "insert into posts (titulo, descripcion, fecha_creacion, categoria, fk_autores_id) values (?, ?, ?, ?, ?)",
+        [
+            titulo,
+            descripcion,
+            fecha_creacion,
+            categoria,
+            fk_autores_id
+        ]
+    );
+};
+
+module.exports = { selectAllPostsWithAutores, selectPostById, insertPost };
