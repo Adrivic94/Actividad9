@@ -27,4 +27,6 @@ const insertPost = ({
     );
 };
 
+
+
 module.exports = { selectAllPostsWithAutores, selectPostById, insertPost };

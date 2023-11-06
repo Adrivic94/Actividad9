@@ -21,4 +21,6 @@ const createPost = async (req, res) => {
 };
 
 
+
+
 module.exports = { getAllPostsWithAutores, createPost };
