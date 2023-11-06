@@ -11,16 +11,14 @@ const selectPostById = (postId) => {
 const insertPost = ({
     titulo,
     descripcion,
-    fecha_creacion,
     categoria,
     fk_autores_id
 }) => {
     return db.query(
-        "insert into posts (titulo, descripcion, fecha_creacion, categoria, fk_autores_id) values (?, ?, ?, ?, ?)",
+        "insert into posts (titulo, descripcion, categoria, fk_autores_id) values (?, ?, ?, ?)",
         [
             titulo,
             descripcion,
-            fecha_creacion,
             categoria,
             fk_autores_id
         ]
