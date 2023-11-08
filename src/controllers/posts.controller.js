@@ -20,7 +20,25 @@ const createPost = async (req, res) => {
     }
 };
 
+const updatePost = async (req, res) => {
+  try {
+    const { postId } = req.params;
+    const [result] = await PostModel.updatePostById(postId, req.body);
+    res.json(result);
+  } catch (error) {
+    res.json({ fatal: error.message });
+  }
+};
+
+const deletePost = async (req, res) => {
+  try {
+    const { postId } = req.params;
+    const [result] = await PostModel.deletePostById(postId);
+    res.json(result);
+  } catch (error) {
+    res.json({ fatal: error.message });
+  }
+};
 
 
-
-module.exports = { getAllPostsWithAutores, createPost };
+module.exports = { getAllPostsWithAutores, createPost, updatePost, deletePost };

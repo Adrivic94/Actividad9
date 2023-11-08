@@ -25,6 +25,15 @@ const insertPost = ({
     );
 };
 
+const updatePostById = (postId, { titulo, descripcion, categoria, fk_autores_id }) => {
+    return db.query(
+        'update posts set titulo = ?, descripcion = ?, categoria = ?, fk_autores_id = ? where idposts = ?',
+        [titulo, descripcion, categoria, fk_autores_id, postId]
+    );
+};
 
+const deletePostById = (postId) => {
+    return db.query('delete from posts where idposts = ?', [postId]);
+};
 
-module.exports = { selectAllPostsWithAutores, selectPostById, insertPost };
+module.exports = { selectAllPostsWithAutores, selectPostById, insertPost, updatePostById, deletePostById };
