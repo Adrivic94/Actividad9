@@ -1,4 +1,5 @@
 const AutorModel = require('../models/autor.model');
+const PostModel = require('../models/post.model');
 
 // GET /api/autores
 const getAllAutores = async (req, res) => {
@@ -32,4 +33,16 @@ const updateAutor = async (req, res) => {
     }
 };
 
-module.exports = {getAllAutores, createAutor, updateAutor};
+//DELETE /api/autores/auroresId
+const deleteAutorAndPosts = async (req, res) => {
+    try {
+        const { autorId } = req.params;
+        await PostModel.deleteAllPostsByAutorId(autorId);
+        const [result] = await AutorModel.deleteAutor(autorId);
+        res.json(result);
+    } catch (error) {
+        res.json({ fatal: error.message });
+    };
+}
+
+module.exports = {getAllAutores, createAutor, updateAutor, deleteAutorAndPosts};

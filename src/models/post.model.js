@@ -36,4 +36,8 @@ const deletePostById = (postId) => {
     return db.query('delete from posts where idposts = ?', [postId]);
 };
 
-module.exports = { selectAllPostsWithAutores, selectPostById, insertPost, updatePostById, deletePostById };
+const deleteAllPostsByAutorId = (autorId) => {
+    return db.query('delete from posts where fk_autores_id = ?', [autorId])
+};
+
+module.exports = { selectAllPostsWithAutores, selectPostById, insertPost, updatePostById, deletePostById, deleteAllPostsByAutorId };
