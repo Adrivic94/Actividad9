@@ -21,4 +21,15 @@ const createAutor = async (req, res) => {
     }
 };
 
-module.exports = {getAllAutores, createAutor};
+// PUT /api/autores/autoresId
+const updateAutor = async (req, res) => {
+    try {
+        const { autorId } = req.params;
+        const [result] = await AutorModel.updateAutorById(autorId, req.body);
+        res.json(result);
+    } catch (error) {
+        res.json({ fatal: error.message });
+    }
+};
+
+module.exports = {getAllAutores, createAutor, updateAutor};

@@ -21,6 +21,12 @@ const insertAutor = ({
     );
 };
 
+const updateAutorById = (autorId, { nombre, email, imagen }) => {
+    return db.query(
+        'update autores set nombre = ?, email = ?, imagen = ? where idautores = ?',
+        [nombre, email, imagen, autorId]
+    );
+}
 
 
-module.exports = { selectAllAutores, selectAutorById, insertAutor };
+module.exports = { selectAllAutores, selectAutorById, insertAutor, updateAutorById };
