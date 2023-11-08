@@ -10,6 +10,17 @@ const getAllPostsWithAutores = async (req, res) => {
   }
 };
 
+// GET /api/posts/AUTORID Devuelve todos los posts de un autor en concreto
+const getAllPostsWithAutorId = async (req, res) => {
+  try {
+    const { autorId } = req.params;
+    const [result] = await PostModel.selectPostByAutorId(autorId);
+    res.json(result);
+  } catch (error) {
+    res.json({ fatal: error.message });
+  }
+};
+
 // POST /api/posts
 const createPost = async (req, res) => {
     try {
@@ -44,4 +55,4 @@ const deletePost = async (req, res) => {
 };
 
 
-module.exports = { getAllPostsWithAutores, createPost, updatePost, deletePost };
+module.exports = { getAllPostsWithAutores, createPost, updatePost, deletePost, getAllPostsWithAutorId };

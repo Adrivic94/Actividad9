@@ -8,6 +8,10 @@ const selectPostById = (postId) => {
     return db.query('select * from posts where idposts = ?', [postId]);
 };
 
+const selectPostByAutorId = (autorId) => {
+    return db.query('select * from posts where fk_autores_id = ?', [autorId]);
+}
+
 const insertPost = ({
     titulo,
     descripcion,
@@ -40,4 +44,4 @@ const deleteAllPostsByAutorId = (autorId) => {
     return db.query('delete from posts where fk_autores_id = ?', [autorId])
 };
 
-module.exports = { selectAllPostsWithAutores, selectPostById, insertPost, updatePostById, deletePostById, deleteAllPostsByAutorId };
+module.exports = { selectAllPostsWithAutores, selectPostById, insertPost, updatePostById, deletePostById, deleteAllPostsByAutorId, selectPostByAutorId };
