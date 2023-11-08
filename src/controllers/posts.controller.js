@@ -1,6 +1,6 @@
 const PostModel = require("../models/post.model");
 
-// GET /api/posts
+// GET /api/posts Devuelve todos los posts con los datos de los autores.
 const getAllPostsWithAutores = async (req, res) => {
   try {
     const [result] = await PostModel.selectAllPostsWithAutores();

@@ -33,7 +33,7 @@ const updateAutor = async (req, res) => {
     }
 };
 
-//DELETE /api/autores/auroresId
+//DELETE /api/autores/auroresId Elimina el autor y todos sus posts
 const deleteAutorAndPosts = async (req, res) => {
     try {
         const { autorId } = req.params;
