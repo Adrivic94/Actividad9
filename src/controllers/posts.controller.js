@@ -10,6 +10,7 @@ const getAllPostsWithAutores = async (req, res) => {
   }
 };
 
+// POST /api/posts
 const createPost = async (req, res) => {
     try {
         const [result] = await PostModel.insertPost(req.body);
@@ -20,6 +21,7 @@ const createPost = async (req, res) => {
     }
 };
 
+// UPDATE /api/posts/POSTID
 const updatePost = async (req, res) => {
   try {
     const { postId } = req.params;
@@ -30,6 +32,7 @@ const updatePost = async (req, res) => {
   }
 };
 
+//DELETE /api/posts/POSTID
 const deletePost = async (req, res) => {
   try {
     const { postId } = req.params;
